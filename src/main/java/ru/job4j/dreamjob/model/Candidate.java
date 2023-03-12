@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Candidate {
-    private LocalDateTime creationDate;
+    private LocalDateTime creationDate = LocalDateTime.now();
     private int id;
     private String name;
     private String description;
@@ -14,6 +14,9 @@ public class Candidate {
         this.name = name;
         this.description = description;
         this.creationDate = creationDate;
+    }
+
+    public Candidate() {
     }
 
     public int getId() {
