@@ -11,7 +11,7 @@ public class Vacancy {
 
     private String description;
 
-    LocalDateTime creationDate;
+    private LocalDateTime creationDate;
 
     public Vacancy(int id, String title, String description, LocalDateTime creationDate) {
         this.id = id;

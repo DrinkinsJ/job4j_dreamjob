@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Candidate {
-    LocalDateTime creationDate;
+    private LocalDateTime creationDate;
     private int id;
     private String name;
     private String description;
