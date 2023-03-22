@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import ru.job4j.dreamjob.model.Candidate;
 import ru.job4j.dreamjob.service.SimpleCandidateServices;
 
+import javax.annotation.concurrent.ThreadSafe;
+
+@ThreadSafe
 @Controller
 @RequestMapping("/candidates")
 public class CandidateController {
