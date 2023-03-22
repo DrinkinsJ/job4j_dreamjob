@@ -5,13 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.dreamjob.model.Candidate;
-import ru.job4j.dreamjob.repository.MemoryCandidateRepository;
 import ru.job4j.dreamjob.service.SimpleCandidateServices;
 
 @Controller
 @RequestMapping("/candidates")
 public class CandidateController {
-    private final SimpleCandidateServices candidateService = SimpleCandidateServices.getInstance();
+    private final SimpleCandidateServices candidateService;
+
+    public CandidateController(SimpleCandidateServices candidateService) {
+        this.candidateService = candidateService;
+    }
+
 
     @GetMapping
     public String getAll(Model model) {
