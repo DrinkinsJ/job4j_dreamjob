@@ -20,12 +20,12 @@ public class MemoryVacancyRepository implements VacancyRepository {
     private final Map<Integer, Vacancy> vacancies = new HashMap<>();
 
     private MemoryVacancyRepository() {
-        save(new Vacancy(0, "Intern Java Developer", "Intern description", LocalDateTime.of(2022, 12, 31, 16, 30), true, 1));
-        save(new Vacancy(0, "Junior Java Developer", "Junior description", LocalDateTime.of(2022, 6, 16, 15, 20), true, 2));
-        save(new Vacancy(0, "Junior+ Java Developer", "Junior+ description", LocalDateTime.of(2021, 11, 30, 14, 10), true, 3));
-        save(new Vacancy(0, "Middle Java Developer", "Middle description", LocalDateTime.of(2021, 5, 15, 13, 33), true, 1));
-        save(new Vacancy(0, "Middle+ Java Developer", "Middle+ description", LocalDateTime.of(2020, 10, 14, 12, 21), true, 2));
-        save(new Vacancy(0, "Senior Java Developer", "Senior description", LocalDateTime.of(2020, 4, 29, 11, 49), true, 3));
+        save(new Vacancy(0, "Intern Java Developer", "Intern description", LocalDateTime.of(2022, 12, 31, 16, 30), true, 1, 0));
+        save(new Vacancy(0, "Junior Java Developer", "Junior description", LocalDateTime.of(2022, 6, 16, 15, 20), true, 2, 0));
+        save(new Vacancy(0, "Junior+ Java Developer", "Junior+ description", LocalDateTime.of(2021, 11, 30, 14, 10), true, 3, 0));
+        save(new Vacancy(0, "Middle Java Developer", "Middle description", LocalDateTime.of(2021, 5, 15, 13, 33), true, 1, 0));
+        save(new Vacancy(0, "Middle+ Java Developer", "Middle+ description", LocalDateTime.of(2020, 10, 14, 12, 21), true, 2, 0));
+        save(new Vacancy(0, "Senior Java Developer", "Senior description", LocalDateTime.of(2020, 4, 29, 11, 49), true, 3, 0));
     }
 
     @Override
@@ -42,8 +42,10 @@ public class MemoryVacancyRepository implements VacancyRepository {
 
     @Override
     public boolean update(Vacancy vacancy) {
-        return vacancies.computeIfPresent(vacancy.getId(), (id, oldVacancy) ->
-                new Vacancy(oldVacancy.getId(), vacancy.getTitle(), vacancy.getDescription(), vacancy.getCreationDate(), vacancy.getVisible(), vacancy.getCityId())) != null;
+        return vacancies.computeIfPresent(vacancy.getId(), (id, oldVacancy) -> new Vacancy(
+                oldVacancy.getId(), vacancy.getTitle(), vacancy.getDescription(),
+                vacancy.getCreationDate(), vacancy.getVisible(), vacancy.getCityId(), vacancy.getFileId()
+        )) != null;
     }
 
     @Override
