@@ -85,4 +85,5 @@ public class Sql2oVacancyRepository implements VacancyRepository {
             return query.setColumnMappings(Vacancy.COLUMN_MAPPING).executeAndFetch(Vacancy.class);
         }
     }
+
 }
