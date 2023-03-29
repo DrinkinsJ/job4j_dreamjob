@@ -5,20 +5,18 @@ import ru.job4j.dreamjob.dto.FileDto;
 import ru.job4j.dreamjob.model.Candidate;
 import ru.job4j.dreamjob.repository.CandidateRepository;
 
-import javax.annotation.concurrent.ThreadSafe;
 import java.util.Collection;
 import java.util.Optional;
 
-@ThreadSafe
 @Service
-public class SimpleCandidateServices implements CandidateService {
+public class SimpleCandidateService implements CandidateService {
 
     private final CandidateRepository candidateRepository;
 
     private final FileService fileService;
 
-    public SimpleCandidateServices(CandidateRepository candidateRepository, FileService fileService) {
-        this.candidateRepository = candidateRepository;
+    public SimpleCandidateService(CandidateRepository memoryCandidateRepository, FileService fileService) {
+        this.candidateRepository = memoryCandidateRepository;
         this.fileService = fileService;
     }
 
