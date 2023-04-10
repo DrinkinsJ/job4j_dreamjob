@@ -119,4 +119,12 @@ public class Sql2oCandidateRepositoryTest {
         var isUpdated = sql2oCandidateRepository.update(candidate);
         assertThat(isUpdated).isFalse();
     }
+
+    @Test
+    public void whenAddCandidatesThenFindAll() {
+        var creationDate = now().truncatedTo(ChronoUnit.MINUTES);
+        var candidate1 = sql2oCandidateRepository.save(new Candidate(0, "name1", "description1", creationDate, 1, file.getId()));
+        var candidate2 = sql2oCandidateRepository.save(new Candidate(0, "name2", "description2", creationDate, 1, file.getId()));
+        assertThat(sql2oCandidateRepository.findAll()).isEqualTo(List.of(candidate1, candidate2));
+    }
 }
