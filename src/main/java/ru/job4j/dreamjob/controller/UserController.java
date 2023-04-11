@@ -37,4 +37,19 @@ public class UserController {
             return "errors/404";
         }
     }
+
+    @GetMapping("/login")
+    public String getLoginPage() {
+        return "users/login";
+    }
+
+    @PostMapping("/register")
+    public String register(Model model, @ModelAttribute User user) {
+        var savedUser = userService.save(user);
+        if (savedUser.isEmpty()) {
+            model.addAttribute("message", "Пользователь с такой почтой уже существует");
+            return "errors/404";
+        }
+        return "redirect:/vacancies";
+    }
 }

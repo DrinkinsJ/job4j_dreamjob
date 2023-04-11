@@ -63,4 +63,17 @@ public class Sql2oUserRepositoryTest {
         var user2 = sql2oUserRepository.save(new User(0, "mail2", "name1", "password1"));
         assertThat(sql2oUserRepository.findAll()).isEqualTo(List.of(user1.get(), user2.get()));
     }
+
+    @Test
+    public void whenUserFindByPasswordAndMailThenGet() {
+        var user1 = sql2oUserRepository.save(new User(0, "mail", "name", "password"));
+        assertThat(sql2oUserRepository.findByEmailAndPassword(user1.get().getEmail(), user1.get().getPassword())).isEqualTo(user1);
+    }
+
+    @Test
+    public void whenUserFindByPasswordAndMailThenEmpty() {
+        var user1 = sql2oUserRepository.save(new User(0, "mail", "name", "password"));
+        assertThat(sql2oUserRepository.findByEmailAndPassword("mail2", user1.get().getPassword())).isEqualTo(Optional.empty());
+        assertThat(sql2oUserRepository.findByEmailAndPassword(user1.get().getEmail(), "password2")).isEqualTo(Optional.empty());
+    }
 }
