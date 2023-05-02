@@ -1,5 +1,7 @@
 package ru.job4j.dreamjob.repository;
 
+import jdk.jfr.Registered;
+import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 import ru.job4j.dreamjob.model.Candidate;
 import ru.job4j.dreamjob.model.Vacancy;
@@ -7,6 +9,7 @@ import ru.job4j.dreamjob.model.Vacancy;
 import java.util.Collection;
 import java.util.Optional;
 
+@Repository
 public class Sql2oCandidateRepository implements CandidateRepository {
 
     private final Sql2o sql2o;
